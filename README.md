@@ -37,7 +37,7 @@ Launch and locate the Focus countdown in the menu bar. Pause, wait, and resume; 
 
 ## Architecture, configuration, and data
 
-`Sources/BreakReminder/main.swift` contains a value-type BreakClock and an AppKit application delegate. A one-second Timer updates the status item from wall-clock deadlines, rather than decrementing counters. When a focus deadline expires the clock enters a five-minute break and shows a panel. When the break expires it returns to focus automatically. Snooze starts a five-minute work period. NSApplication uses accessory activation policy, so there is no Dock icon. The app writes no files, makes no network requests, and requests no notification permission.
+`Sources/BreakReminder/App.swift` contains a value-type BreakClock and an AppKit application delegate. The application entry point runs on Swift's main actor. A one-second Timer updates the status item from wall-clock deadlines, rather than decrementing counters. When a focus deadline expires the clock enters a five-minute break and shows a panel. When the break expires it returns to focus automatically. Snooze starts a five-minute work period. NSApplication uses accessory activation policy, so there is no Dock icon. The app writes no files, makes no network requests, and requests no notification permission.
 
 ## Verification
 
@@ -62,7 +62,7 @@ Install Xcode command-line tools if swift or the SDK is unavailable. Look in the
 ## Source map
 
 - `Package.swift`
-- `Sources/BreakReminder/main.swift`
+- `Sources/BreakReminder/App.swift`
 
 ## Development and license
 

@@ -67,6 +67,8 @@ struct BreakClock {
     @objc func work50() { clock.restart(minutes: 50, now: Date()); panel?.orderOut(nil); update() }
     @objc func quit() { timer?.invalidate(); NSApp.terminate(nil) }
 }
+@main struct BreakReminder {
+@MainActor static func main() {
 if CommandLine.arguments.contains("--self-test") {
     let now = Date(timeIntervalSince1970: 0); var clock = BreakClock(now: now)
     precondition(clock.seconds(now: now) == 1500)
@@ -76,4 +78,6 @@ if CommandLine.arguments.contains("--self-test") {
     print("Pause/resume, phase transition, and snooze checks passed")
 } else {
     let app = NSApplication.shared; let delegate = Delegate(); app.delegate = delegate; app.run()
+}
+}
 }
